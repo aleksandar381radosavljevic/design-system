@@ -1,0 +1,135 @@
+/*
+ * Osnova design tokens: the contract every Osnova component reads.
+ *
+ * These are neutral, brand-free defaults. A project changes its look by
+ * overriding these custom properties in its own theme file, never by
+ * targeting Osnova's internal class names.
+ *
+ * Everything sits in the `osnova` cascade layer, so any unlayered `:root`
+ * rule in the project's theme wins no matter which stylesheet loads first.
+ *
+ * Every color pair a component uses is listed in test/contrast-pairs.ts and
+ * checked for WCAG 2.2 AA (4.5:1 text, 3:1 UI boundaries and focus).
+ */
+
+@layer osnova {
+  :root {
+    /* Color: surfaces */
+    --color-bg: #f6f7f9;
+    --color-surface: #ffffff;
+    --color-surface-sunken: #f6f7f9;
+    --color-surface-neutral: #e8eaee;
+
+    /* Color: text */
+    --color-text: #1b1f26;
+    --color-text-muted: #565d6b;
+    --color-text-on-accent: #ffffff;
+
+    /* Color: borders. Subtle is decorative only, never a component boundary. */
+    --color-border-subtle: #d5d9e0;
+    --color-border: #7b8291;
+
+    /* Color: accent (primary action, links, focus) */
+    --color-accent: #2d5bb9;
+    --color-accent-hover: #244a97;
+    --color-accent-text: #2d5bb9;
+    --color-accent-soft: #e2eaf8;
+    --color-accent-decorative: #6b8fd9;
+
+    /* Color: status */
+    --color-success: #2d6a45;
+    --color-success-soft: #e1f0e6;
+    --color-attention: #7a5a12;
+    --color-attention-fill: #e9b949;
+    --color-attention-soft: #fcefd2;
+    --color-danger: #a3342c;
+    --color-danger-hover: #872a23;
+    --color-danger-soft: #f8e1de;
+
+    --color-focus: #2d5bb9;
+
+    /* Typography: system font stacks only, never web fonts */
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+    /* Type scale: each style is a size, line height and weight set */
+    --text-display-size: 1.75rem;
+    --text-display-line: 1.2;
+    --text-display-weight: 800;
+    --text-title-size: 1.375rem;
+    --text-title-line: 1.25;
+    --text-title-weight: 800;
+    --text-heading-size: 1.125rem;
+    --text-heading-line: 1.3;
+    --text-heading-weight: 700;
+    --text-body-size: 1rem;
+    --text-body-line: 1.55;
+    --text-body-weight: 400;
+    --text-body-sm-size: 0.9375rem;
+    --text-body-sm-line: 1.5;
+    --text-body-sm-weight: 400;
+    --text-caption-size: 0.875rem;
+    --text-caption-line: 1.4;
+    --text-caption-weight: 600;
+    --text-eyebrow-size: 0.8125rem;
+    --text-eyebrow-line: 1.3;
+    --text-eyebrow-weight: 800;
+    --text-data-size: 0.875rem;
+    --text-data-line: 1.4;
+    --text-data-weight: 600;
+
+    /* Spacing: 4px base; names are steps, not pixels */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+
+    /* Radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
+
+    /* Elevation. Never the only boundary of an interactive element. */
+    --shadow-sm: 0 1px 3px rgb(27 31 38 / 0.06);
+    --shadow-md: 0 2px 8px rgb(27 31 38 / 0.1);
+    --shadow-lg: 0 8px 24px rgb(27 31 38 / 0.16);
+
+    /* Motion */
+    --duration-fast: 120ms;
+    --duration-base: 200ms;
+    --duration-slow: 1200ms;
+    --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+    /* Sizing */
+    --target-min: 44px;
+    --focus-ring-width: 2px;
+    --focus-ring-offset: 2px;
+
+    /*
+     * Breakpoints, for reference only: custom properties cannot be used in
+     * @media rules, so components repeat these values as literals.
+     */
+    --bp-md: 40rem;
+    --bp-lg: 64rem;
+
+    color-scheme: light;
+  }
+
+  /*
+   * A theme that overrides --duration-* must repeat this block, because an
+   * unlayered theme rule beats it.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --duration-fast: 0.01ms;
+      --duration-base: 0.01ms;
+      --duration-slow: 0.01ms;
+    }
+  }
+}
