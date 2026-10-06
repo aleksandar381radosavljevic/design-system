@@ -1,0 +1,104 @@
+@layer osnova {
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-block-size: var(--target-min);
+    min-inline-size: var(--target-min);
+    padding-block: var(--space-2);
+    padding-inline: var(--space-4);
+    border: var(--border-width) solid transparent;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-label-size);
+    line-height: var(--text-label-line);
+    font-weight: var(--text-label-weight);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color var(--duration-fast) var(--easing-standard),
+      border-color var(--duration-fast) var(--easing-standard),
+      color var(--duration-fast) var(--easing-standard);
+  }
+
+  .button:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .lg {
+    min-block-size: var(--target-lg);
+    min-inline-size: var(--target-lg);
+    padding-inline: var(--space-5);
+  }
+
+  .primary {
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+  }
+
+  .primary:hover,
+  .primary:active {
+    background-color: var(--color-accent-hover);
+  }
+
+  .secondary {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .secondary:hover,
+  .secondary:active {
+    background-color: var(--color-surface-neutral);
+  }
+
+  .ghost {
+    background-color: transparent;
+    color: var(--color-accent-text);
+  }
+
+  .ghost:hover,
+  .ghost:active {
+    background-color: var(--color-accent-soft);
+  }
+
+  .danger {
+    background-color: var(--color-danger);
+    color: var(--color-text-on-accent);
+  }
+
+  .danger:hover,
+  .danger:active {
+    background-color: var(--color-danger-hover);
+  }
+
+  .button:disabled {
+    background-color: var(--color-surface-neutral);
+    border-color: transparent;
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+  }
+
+  .button[aria-busy='true'] {
+    cursor: progress;
+  }
+
+  .spinner {
+    animation: spin var(--duration-slow) linear infinite;
+  }
+
+  /* The duration tokens collapse to 0.01ms here, which would make the spinner flicker: stop it instead. */
+  @media (prefers-reduced-motion: reduce) {
+    .spinner {
+      animation: none;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}

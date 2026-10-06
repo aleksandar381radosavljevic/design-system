@@ -1,0 +1,19 @@
+@layer osnova {
+  .wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .icon {
+    position: absolute;
+    inset-inline-start: var(--space-3);
+    color: var(--color-text-muted);
+    pointer-events: none;
+  }
+
+  /* Room for the 20px icon plus the gaps on both sides of it. */
+  .withIcon {
+    padding-inline-start: calc(var(--space-3) + var(--space-5) + var(--space-2));
+  }
+}

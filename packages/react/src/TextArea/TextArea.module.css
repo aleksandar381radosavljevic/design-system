@@ -1,0 +1,15 @@
+@layer osnova {
+  .textArea {
+    display: block;
+    resize: vertical;
+  }
+
+  .autoGrow {
+    field-sizing: content;
+    resize: none;
+    /* N lines plus the vertical padding and border. */
+    max-block-size: calc(
+      var(--textarea-max-rows) * 1lh + 2 * var(--space-2) + 2 * var(--border-width)
+    );
+  }
+}

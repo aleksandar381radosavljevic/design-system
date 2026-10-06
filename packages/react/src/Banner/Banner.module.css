@@ -1,0 +1,83 @@
+@layer osnova {
+  .banner {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line);
+    font-weight: var(--text-body-weight);
+  }
+
+  .info,
+  .warning {
+    background-color: var(--color-attention-soft);
+    --banner-accent: var(--color-attention);
+  }
+
+  .success {
+    background-color: var(--color-success-soft);
+    --banner-accent: var(--color-success);
+  }
+
+  .error {
+    background-color: var(--color-danger-soft);
+    --banner-accent: var(--color-danger);
+  }
+
+  /* One line high, so the icon stays centered on the first line of text. */
+  .iconSlot {
+    display: flex;
+    align-items: center;
+    block-size: 1lh;
+    color: var(--banner-accent);
+  }
+
+  .content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-inline-size: 0;
+  }
+
+  .title {
+    color: var(--banner-accent);
+    font-weight: var(--text-label-weight);
+  }
+
+  .action {
+    margin-block-start: var(--space-2);
+  }
+
+  /* 44px target that overlaps the padding instead of growing the banner. */
+  .dismiss {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    min-block-size: var(--target-min);
+    min-inline-size: var(--target-min);
+    margin-block: calc(-1 * var(--space-3));
+    margin-inline-end: calc(-1 * var(--space-3));
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color var(--duration-fast) var(--easing-standard);
+  }
+
+  .dismiss:hover {
+    background-color: var(--color-surface);
+  }
+
+  .dismiss:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+}

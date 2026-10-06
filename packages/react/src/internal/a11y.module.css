@@ -1,0 +1,14 @@
+@layer osnova {
+  /*
+   * Hidden on screen, still read by assistive technology. The 1px size is the
+   * standard technique, not a design value, so it is not a token.
+   */
+  .visuallyHidden {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

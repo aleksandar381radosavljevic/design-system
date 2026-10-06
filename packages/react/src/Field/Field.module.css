@@ -1,0 +1,86 @@
+@layer osnova {
+  .field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-family: var(--font-body);
+  }
+
+  .label {
+    color: var(--color-text);
+    font-size: var(--text-label-size);
+    line-height: var(--text-label-line);
+    font-weight: var(--text-label-weight);
+  }
+
+  .hint,
+  .error {
+    margin: 0;
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line);
+    font-weight: var(--text-body-sm-weight);
+  }
+
+  .hint {
+    color: var(--color-text-muted);
+  }
+
+  .error {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-1);
+    color: var(--color-danger);
+  }
+
+  /* One line high, so the icon stays centered on the first line of the message. */
+  .errorIcon {
+    display: flex;
+    align-items: center;
+    block-size: 1lh;
+  }
+
+  /* Shared by Input and TextArea. */
+  .control {
+    box-sizing: border-box;
+    inline-size: 100%;
+    min-block-size: var(--target-min);
+    margin: 0;
+    padding-block: var(--space-2);
+    padding-inline: var(--space-3);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    /* 16px or more, so iOS Safari does not zoom in on focus. */
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line);
+    font-weight: var(--text-body-weight);
+    transition: border-color var(--duration-fast) var(--easing-standard);
+  }
+
+  .control::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+  }
+
+  .control:hover:not(:disabled) {
+    border-color: var(--color-text-muted);
+  }
+
+  .control:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .control[aria-invalid='true'] {
+    border-color: var(--color-danger);
+  }
+
+  .control:disabled {
+    background-color: var(--color-surface-neutral);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+  }
+}

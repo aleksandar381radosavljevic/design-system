@@ -1,0 +1,48 @@
+@layer osnova {
+  .group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .skeleton {
+    display: block;
+    inline-size: var(--skeleton-width, 100%);
+    block-size: var(--skeleton-height, 1em);
+    background-color: var(--color-surface-neutral);
+    animation: pulse var(--duration-slow) var(--easing-standard) infinite alternate;
+  }
+
+  /* A text bar is 1em high and centered in one line box, so it takes the space of a line of text. */
+  .text {
+    margin-block: calc((1lh - 1em) / 2);
+    border-radius: var(--radius-sm);
+  }
+
+  .block {
+    border-radius: var(--radius-lg);
+  }
+
+  .circle {
+    block-size: var(--skeleton-height, auto);
+    aspect-ratio: 1;
+    border-radius: var(--radius-full);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton {
+      animation: none;
+    }
+  }
+
+  @keyframes pulse {
+    from {
+      opacity: 0.5;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
