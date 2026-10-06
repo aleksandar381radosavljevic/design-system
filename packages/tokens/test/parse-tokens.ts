@@ -1,20 +1,13 @@
 /**
- * Reads the custom properties of the first `:root` block in a stylesheet and
- * resolves `var()` references between them. Deliberately small: it handles the
- * shape of tokens.css, not arbitrary CSS.
+ * Reads the custom properties of the first `:root` block in each stylesheet and
+ * resolves `var()` references between them. Later stylesheets override earlier
+ * ones, the way a project theme overrides tokens.css. Deliberately small: it
+ * handles the shape of tokens.css and theme files, not arbitrary CSS.
  */
-export function parseRootTokens(css: string): Map<string, string> {
-  const source = css.replace(/\/\*[\s\S]*?\*\//g, '');
-  const start = source.indexOf(':root');
-  if (start === -1) throw new Error('No :root block found');
-  const open = source.indexOf('{', start);
-  const close = source.indexOf('}', open);
-  const body = source.slice(open + 1, close);
-
+export function parseRootTokens(...stylesheets: string[]): Map<string, string> {
   const raw = new Map<string, string>();
-  for (const match of body.matchAll(/(--[\w-]+)\s*:\s*([^;]+);/g)) {
-    const [, name, value] = match;
-    if (name && value) raw.set(name, value.trim());
+  for (const css of stylesheets) {
+    for (const [name, value] of readRootBlock(css)) raw.set(name, value);
   }
 
   const resolve = (value: string, seen: Set<string>): string =>
@@ -26,6 +19,22 @@ export function parseRootTokens(css: string): Map<string, string> {
     });
 
   return new Map([...raw].map(([name, value]) => [name, resolve(value, new Set([name]))]));
+}
+
+function readRootBlock(css: string): [string, string][] {
+  const source = css.replace(/\/\*[\s\S]*?\*\//g, '');
+  const start = source.indexOf(':root');
+  if (start === -1) throw new Error('No :root block found');
+  const open = source.indexOf('{', start);
+  const close = source.indexOf('}', open);
+  const body = source.slice(open + 1, close);
+
+  const entries: [string, string][] = [];
+  for (const match of body.matchAll(/(--[\w-]+)\s*:\s*([^;]+);/g)) {
+    const [, name, value] = match;
+    if (name && value) entries.push([name, value.trim()]);
+  }
+  return entries;
 }
 
 /** WCAG 2.x contrast ratio between two 6-digit hex colors. */

@@ -38,6 +38,9 @@ export const contrastPairs: ContrastPair[] = [
   { fg: '--color-accent-text', bg: '--color-surface', kind: 'text', usedFor: 'Links in cards' },
   { fg: '--color-accent-text', bg: '--color-accent-soft', kind: 'text', usedFor: 'Badge accent' },
   { fg: '--color-accent-text', bg: '--color-surface-neutral', kind: 'text', usedFor: 'Accent text next to neutral fills' },
+  { fg: '--color-accent-text', bg: '--color-success-soft', kind: 'text', usedFor: 'Ghost Button or link as success Banner action' },
+  { fg: '--color-accent-text', bg: '--color-attention-soft', kind: 'text', usedFor: 'Ghost Button or link as info/warning Banner action' },
+  { fg: '--color-accent-text', bg: '--color-danger-soft', kind: 'text', usedFor: 'Ghost Button or link as error Banner action' },
   { fg: '--color-text-on-accent', bg: '--color-accent', kind: 'text', usedFor: 'Button primary' },
   { fg: '--color-text-on-accent', bg: '--color-accent-hover', kind: 'text', usedFor: 'Button primary hover/active' },
 
@@ -63,4 +66,8 @@ export const contrastPairs: ContrastPair[] = [
   { fg: '--color-focus', bg: '--color-bg', kind: 'ui', usedFor: 'Focus ring on the page' },
   { fg: '--color-focus', bg: '--color-surface', kind: 'ui', usedFor: 'Focus ring in cards' },
   { fg: '--color-focus', bg: '--color-surface-neutral', kind: 'ui', usedFor: 'Focus ring on neutral fills' },
+  { fg: '--color-focus', bg: '--color-accent-soft', kind: 'ui', usedFor: 'Focus ring on a hovered ghost Button' },
+  { fg: '--color-focus', bg: '--color-success-soft', kind: 'ui', usedFor: 'Focus ring in a success Banner (action, dismiss)' },
+  { fg: '--color-focus', bg: '--color-attention-soft', kind: 'ui', usedFor: 'Focus ring in an info/warning Banner (action, dismiss)' },
+  { fg: '--color-focus', bg: '--color-danger-soft', kind: 'ui', usedFor: 'Focus ring in an error Banner (action, dismiss)' },
 ];

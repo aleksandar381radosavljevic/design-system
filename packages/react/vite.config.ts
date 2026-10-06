@@ -24,7 +24,7 @@ export default defineConfig({
     minify: false,
     rolldownOptions: {
       // Peer and runtime dependencies stay imports, so the app bundles one copy.
-      external: [/^react($|\/)/, /^react-dom($|\/)/, /^@aleksandar381radosavljevic\//],
+      external: [/^react($|\/)/, /^react-dom($|\/)/, /^lucide-react($|\/)/, /^@aleksandar381radosavljevic\//],
       output: {
         // The bundle is one module, so a per-file directive would be dropped.
         // One 'use client' on the entry makes every component importable from

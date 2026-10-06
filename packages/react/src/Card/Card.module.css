@@ -1,0 +1,64 @@
+@layer osnova {
+  .card {
+    position: relative;
+    display: block;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--duration-fast) var(--easing-standard);
+  }
+
+  .default {
+    padding: var(--space-4);
+  }
+
+  .compact {
+    padding: var(--space-3);
+  }
+
+  .link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Stretches the link's click area over the whole card. */
+  .link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  /* Buttons and links inside the card stay clickable above the stretched link. */
+  .card :is(a, button, input, select, textarea):not(.link) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .card:has(.link:hover) {
+    box-shadow: var(--shadow-md);
+  }
+
+  .link:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* Where :has() works, the focus ring goes around the whole card instead of the title. */
+  @supports selector(:has(*)) {
+    .link:focus-visible {
+      outline: none;
+    }
+
+    .card:has(.link:focus-visible) {
+      outline: var(--focus-ring-width) solid var(--color-focus);
+      outline-offset: var(--focus-ring-offset);
+    }
+  }
+}

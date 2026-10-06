@@ -68,6 +68,9 @@
     --text-body-sm-size: 0.9375rem;
     --text-body-sm-line: 1.5;
     --text-body-sm-weight: 400;
+    --text-label-size: 1rem;
+    --text-label-line: 1.3;
+    --text-label-weight: 600;
     --text-caption-size: 0.875rem;
     --text-caption-line: 1.4;
     --text-caption-weight: 600;
@@ -108,6 +111,8 @@
 
     /* Sizing */
     --target-min: 44px;
+    --target-lg: 48px;
+    --border-width: 1px;
     --focus-ring-width: 2px;
     --focus-ring-offset: 2px;
 

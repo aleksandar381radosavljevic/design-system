@@ -9,7 +9,7 @@ Osnova ("foundation") is a shared design system for my projects: design tokens a
 
 Principles: WCAG 2.2 AA by default (every color pair is contrast-tested), system font stack only, icons from [Lucide](https://lucide.dev) through one `Icon` component, semantic HTML first.
 
-Status: scaffold. The first component scope (Button, Badge, Card, Input, Icon, Banner, Skeleton, EmptyState) is proposed in [`docs/component-api-proposal.md`](docs/component-api-proposal.md) and waits for approval. Decisions are in [`docs/decisions/`](docs/decisions/).
+Status: first component scope built (OsnovaProvider, Icon, Button, Badge, Card, Input, TextArea, Banner, Skeleton, EmptyState), as approved in [`docs/component-api-proposal.md`](docs/component-api-proposal.md). Usage examples are in [`docs/components.md`](docs/components.md); decisions are in [`docs/decisions/`](docs/decisions/).
 
 ## Use Osnova in a project
 
@@ -37,8 +37,10 @@ Only the `@aleksandar381radosavljevic` scope goes to GitHub; every other package
 ### 3. Install
 
 ```sh
-npm install @aleksandar381radosavljevic/osnova-tokens @aleksandar381radosavljevic/osnova-react
+npm install @aleksandar381radosavljevic/osnova-tokens @aleksandar381radosavljevic/osnova-react lucide-react
 ```
+
+`lucide-react` is a peer dependency: the app imports the icons it uses from it and registers them in `OsnovaProvider` ([decision 0004](docs/decisions/0004-component-api-conventions.md), setup in [`docs/components.md`](docs/components.md)).
 
 ### 4. Deploy (Vercel and other CI)
 
@@ -98,11 +100,12 @@ Layout:
 
 ```text
 packages/
-  tokens/   src/tokens.css, test/ (contrast pairs and WCAG check), scripts/build.mjs
-  react/    src/ (components, CSS Modules), ai/rules.md, test/ (setup)
+  tokens/   src/tokens.css, test/ (contrast pairs, WCAG check under default and test themes), scripts/build.mjs
+  react/    src/ (one folder per component: Name.tsx, Name.module.css, Name.test.tsx), ai/rules.md, test/
 docs/
   decisions/                 ADRs
-  component-api-proposal.md  first-scope component APIs (awaiting approval)
+  component-api-proposal.md  first-scope component APIs (approved 2026-10-06)
+  components.md              usage examples
 ```
 
 TypeScript note: the repository uses TypeScript 6.0 because typescript-eslint does not support TypeScript 7 yet. The trigger for moving to 7 is in [decision 0003](docs/decisions/0003-toolchain.md).

@@ -1,8 +1,14 @@
 ### Osnova design system
 - Build UI from Osnova components (`@aleksandar381radosavljevic/osnova-react`) first. When something is missing, propose adding it to Osnova (`new-component` skill) instead of building a one-off in the app.
 - Import the stylesheets once at the app root: `@aleksandar381radosavljevic/osnova-tokens/tokens.css`, then `@aleksandar381radosavljevic/osnova-react/styles.css`, then the project theme.
-- A project changes appearance only by overriding Osnova's tokens (`--color-*`, `--space-*`, `--radius-*`, `--text-*`, `--shadow-*`, `--duration-*`) in its theme file. Never restyle Osnova components by targeting their internal class names.
+- Render one `OsnovaProvider` at the app root, inside a file marked `'use client'` (in Next.js App Router a server layout cannot pass icon or link components as props). Pass `linkComponent` (Next.js `Link`) and `icons`.
+- Icons only through Osnova's `Icon` (or the `icon`/`iconStart`/`iconEnd` props), by Lucide name. Register every icon the app uses in one icon file passed to `OsnovaProvider icons`: `{ 'chevron-right': ChevronRight }`, importing from `lucide-react`. Never import the full `icons` map or `DynamicIcon`. An unregistered name renders `circle-help` and warns in development.
+- An `Icon` without `label` is decorative; give it `label` only when no visible text carries its meaning. An icon-only `Button` needs `aria-label`.
+- Navigation is a link: use `Button href` or `CardLink`, never a `Button` with `onClick` that navigates. Use `type="submit"` explicitly on form submit buttons (the default is `type="button"`).
+- Osnova renders no built-in text: pass every label in the app's language (`label`, `dismissLabel`, `aria-label`, `SkeletonGroup label`).
+- `Banner live` only for a banner that appears after a user action (`polite`, or `assertive` for urgent errors); never for a banner present on page load. Wrap loading skeletons in one `SkeletonGroup` with a `label`.
+- Pick `EmptyState headingLevel` to fit the page outline, and always give it an `action`.
+- A project changes appearance only by overriding Osnova's tokens (`--color-*`, `--space-*`, `--radius-*`, `--text-*`, `--shadow-*`, `--duration-*`) in its theme file. Never restyle Osnova components by targeting their internal class names or by nesting selectors into them. `className` is for layout (margin, grid placement, width) only; on `Input` and `TextArea` it goes on the outer wrapper.
 - Project components read semantic tokens (`--color-text-muted`), not the theme's palette primitives.
 - When a theme changes color tokens, re-check WCAG 2.2 AA for every pair Osnova uses (4.5:1 text, 3:1 UI boundaries and focus indicators). A theme that overrides `--duration-*` must also set them to `0.01ms` under `prefers-reduced-motion: reduce`.
-- Icons only through Osnova's `Icon` component, by Lucide icon name.
 - System font stack only; never add web fonts.

@@ -1,11 +1,11 @@
 # Component API proposal: first scope
 
-- Status: **Awaiting owner approval.** Nothing below is built yet.
+- Status: **Approved 2026-10-06** by the owner, in full, including the recommended options for every "Decision needed" (explicit icon registry, `OsnovaProvider` with `linkComponent`, separate `Input` and `TextArea`). Built in `packages/react`; conventions recorded in [ADR 0004](decisions/0004-component-api-conventions.md); usage in [`components.md`](components.md).
 - Date: 2026-10-05
 - Scope: Button, Badge, Card, Input, Icon, Banner, Skeleton, EmptyState (administrativni-asistent ADR 0010)
 - Source: administrativni-asistent `docs/06-design-system.md` §11, reshaped into a shared, project-neutral API following the `new-component` skill, section 2.
 
-Approve, change or reject each component. The ones marked **Decision needed** have a choice that changes the API.
+The sections marked **Decision needed** were decided as recommended.
 
 ## Shared conventions (apply to every component)
 
