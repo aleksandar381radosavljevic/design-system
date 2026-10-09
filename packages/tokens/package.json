@@ -1,6 +1,6 @@
 {
   "name": "@aleksandar381radosavljevic/osnova-tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Osnova design tokens as framework-free CSS custom properties.",
   "license": "UNLICENSED",
   "type": "module",

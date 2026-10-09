@@ -1,6 +1,6 @@
 {
   "name": "@aleksandar381radosavljevic/osnova-react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Osnova React components, styled with CSS Modules and Osnova design tokens.",
   "license": "UNLICENSED",
   "type": "module",
@@ -33,7 +33,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@aleksandar381radosavljevic/osnova-tokens": "^0.0.0"
+    "@aleksandar381radosavljevic/osnova-tokens": "^0.1.0"
   },
   "peerDependencies": {
     "lucide-react": "^1.0.0",
