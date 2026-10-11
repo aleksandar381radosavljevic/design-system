@@ -1,6 +1,6 @@
 # 0005. Second component scope: scrim token and breakpoint literals
 
-- Status: Proposed (awaiting owner approval of [`component-api-proposal-0.2.md`](../component-api-proposal-0.2.md))
+- Status: Accepted (owner approved [`component-api-proposal-0.2.md`](../component-api-proposal-0.2.md) on 2026-10-11)
 - Date: 2026-10-11
 
 ## Context

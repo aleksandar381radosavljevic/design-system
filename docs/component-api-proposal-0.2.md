@@ -1,6 +1,6 @@
 # Component API proposal: Osnova 0.2.0
 
-- Status: **Awaiting owner approval.** Nothing below is built yet.
+- Status: **Approved by the owner on 2026-10-11, without changes**, including the defaults in the two "Decision needed" items (separate RadioGroup later, no ConfirmDialog).
 - Date: 2026-10-11
 - Scope: ProgressBar, SegmentedControl, Dialog. These are the generic pieces the administrativni-asistent checklist (P4) needs and Osnova 0.1.0 lacks (owner decision 2026-10-11: add them to Osnova, release 0.2.0; P1 and P3 are built on 0.1.0 meanwhile).
 - Source: administrativni-asistent `docs/06-design-system.md` §12.13, §12.14 and §12.19, and `docs/08-screen-specifications.md` P4, reshaped into a project-neutral API following the `new-component` skill, section 2.
