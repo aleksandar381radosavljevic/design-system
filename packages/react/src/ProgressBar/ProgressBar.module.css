@@ -1,0 +1,47 @@
+@layer osnova {
+  .progress {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-family: var(--font-body);
+  }
+
+  .label {
+    color: var(--color-text);
+    font-size: var(--text-data-size);
+    line-height: var(--text-data-line);
+    font-weight: var(--text-data-weight);
+  }
+
+  /*
+   * <progress> is styled through vendor pseudo-elements: WebKit/Blink use
+   * ::-webkit-progress-*, Firefox uses ::-moz-progress-bar on the element.
+   */
+  .bar {
+    appearance: none;
+    display: block;
+    inline-size: 100%;
+    block-size: var(--space-2);
+    overflow: hidden;
+    border: none;
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-neutral);
+    color: var(--color-accent);
+  }
+
+  .bar::-webkit-progress-bar {
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface-neutral);
+  }
+
+  .bar::-webkit-progress-value {
+    border-radius: var(--radius-full);
+    background-color: var(--color-accent);
+    transition: inline-size var(--duration-base) var(--easing-standard);
+  }
+
+  .bar::-moz-progress-bar {
+    border-radius: var(--radius-full);
+    background-color: var(--color-accent);
+  }
+}

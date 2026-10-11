@@ -167,3 +167,54 @@ Each Skeleton is hidden from assistive technology; the group's label is announce
 />
 <EmptyState headingLevel={3} title="Nema rezultata" action={<a href="/zadaci">Prikaži sve</a>} />
 ```
+
+## ProgressBar
+
+```tsx
+<ProgressBar value={done} max={total} label={`${done} / ${total} završeno`} />
+```
+
+The label is visible and is also the bar's accessible name. The bar does not announce changes; announce them from one page-level live region.
+
+## SegmentedControl
+
+```tsx
+const statusOptions = [
+  { value: 'todo', label: 'Nije počelo' },
+  { value: 'in_progress', label: 'U toku' },
+  { value: 'done', label: 'Završeno' },
+];
+
+<SegmentedControl
+  legend="Prijava prebivališta"
+  legendDisplay="hidden"
+  options={statusOptions}
+  value={status}
+  onChange={setStatus}
+/>
+```
+
+Native radios: Tab enters the group on the selected option and the arrow keys move and select. Segments share the width the container gives them, so the app decides where the control sits.
+
+## Dialog
+
+```tsx
+<Dialog
+  open={confirming}
+  onClose={() => setConfirming(false)}
+  title="Poništi napredak?"
+  description="Sve procedure ovog događaja vraćaju se na „Nije počelo”."
+  actions={
+    <>
+      <Button variant="secondary" autoFocus onClick={() => setConfirming(false)}>
+        Odustani
+      </Button>
+      <Button variant="danger" onClick={resetProgress}>
+        Poništi
+      </Button>
+    </>
+  }
+/>
+```
+
+The app owns `open`. Escape calls `onClose` and leaves closing to the app. Put `autoFocus` on the safe choice; focus returns to the opening button on close. A confirmation is this pattern, not a separate component.
