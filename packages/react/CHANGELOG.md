@@ -1,5 +1,16 @@
 # @aleksandar381radosavljevic/osnova-react
 
+## 0.2.0
+
+### Minor Changes
+
+- [#3](https://github.com/aleksandar381radosavljevic/design-system/pull/3) [`ffec054`](https://github.com/aleksandar381radosavljevic/design-system/commit/ffec0549950567530c4b665d247b1ddf6e2af82b) Thanks [@aleksandar381radosavljevic](https://github.com/aleksandar381radosavljevic)! - Add ProgressBar, SegmentedControl and Dialog, and the `--color-scrim` token for the dialog backdrop.
+
+### Patch Changes
+
+- Updated dependencies [[`ffec054`](https://github.com/aleksandar381radosavljevic/design-system/commit/ffec0549950567530c4b665d247b1ddf6e2af82b)]:
+  - @aleksandar381radosavljevic/osnova-tokens@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes
