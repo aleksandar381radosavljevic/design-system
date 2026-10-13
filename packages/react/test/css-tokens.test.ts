@@ -37,10 +37,20 @@ describe.each(modules)('$file', ({ file, css }) => {
   });
 
   it('hard-codes no absolute lengths', () => {
-    const lengths = css.match(/\b\d*\.?\d+(px|rem|pt)\b/g) ?? [];
+    // Custom properties cannot be used in @media conditions, so breakpoints
+    // repeat the --bp-* values there (tokens.css); only declarations are checked.
+    const declarations = css.replace(/@media[^{]*\{/g, '{');
+    const lengths = declarations.match(/\b\d*\.?\d+(px|rem|pt)\b/g) ?? [];
     // The visually-hidden technique needs a literal 1px box.
     const allowed = file.endsWith('a11y.module.css') ? ['1px', '1px'] : [];
     expect(lengths).toEqual(allowed);
+  });
+
+  it('uses only the --bp-* breakpoints in media queries', () => {
+    const breakpoints = new Set([...tokensCss.matchAll(/--bp-[\w-]+\s*:\s*([^;]+);/g)].map((match) => match[1]?.trim()));
+    const conditions = [...css.matchAll(/@media([^{]*)\{/g)].map((match) => match[1] ?? '');
+    const lengths = conditions.flatMap((condition) => condition.match(/\d*\.?\d+(px|rem|em)\b/g) ?? []);
+    expect(lengths.filter((length) => !breakpoints.has(length))).toEqual([]);
   });
 
   it('sets fonts, radii and shadows only through tokens', () => {

@@ -31,7 +31,13 @@ describe.each(themes)('contrast under the $theme theme (WCAG 2.2 AA)', ({ tokens
 describe('tokens.css', () => {
   it('defines every color token the pair list relies on', () => {
     const colorTokens = [...tokens.keys()].filter((name) => name.startsWith('--color-'));
-    const decorativeOnly = ['--color-border-subtle', '--color-accent-decorative', '--color-attention-fill'];
+    // Decorative fills and the dialog scrim, which sits behind content and is never read against.
+    const decorativeOnly = [
+      '--color-border-subtle',
+      '--color-accent-decorative',
+      '--color-attention-fill',
+      '--color-scrim',
+    ];
     const covered = new Set(contrastPairs.flatMap(({ fg, bg }) => [fg, bg]));
     const uncovered = colorTokens.filter((name) => !covered.has(name) && !decorativeOnly.includes(name));
     expect(uncovered).toEqual([]);

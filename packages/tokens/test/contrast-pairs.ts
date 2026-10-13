@@ -61,6 +61,9 @@ export const contrastPairs: ContrastPair[] = [
   { fg: '--color-border', bg: '--color-bg', kind: 'ui', usedFor: 'Input and secondary Button border on the page' },
   { fg: '--color-border', bg: '--color-surface-neutral', kind: 'ui', usedFor: 'Borders on neutral fills' },
   { fg: '--color-danger', bg: '--color-surface', kind: 'ui', usedFor: 'Invalid Input border' },
+  { fg: '--color-accent', bg: '--color-surface-neutral', kind: 'ui', usedFor: 'ProgressBar fill on its track' },
+  { fg: '--color-accent', bg: '--color-surface', kind: 'ui', usedFor: 'Selected SegmentedControl segment in a card' },
+  { fg: '--color-accent', bg: '--color-bg', kind: 'ui', usedFor: 'Selected SegmentedControl segment on the page' },
 
   // Focus ring on every surface it can sit on
   { fg: '--color-focus', bg: '--color-bg', kind: 'ui', usedFor: 'Focus ring on the page' },

@@ -1,0 +1,92 @@
+@layer osnova {
+  .group {
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: var(--font-body);
+  }
+
+  .legend {
+    margin-block-end: var(--space-2);
+    padding: 0;
+    color: var(--color-text);
+    font-size: var(--text-label-size);
+    line-height: var(--text-label-line);
+    font-weight: var(--text-label-weight);
+  }
+
+  /* Equal-width segments that fill whatever width the container gives them. */
+  .segments {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+  }
+
+  .segment {
+    position: relative;
+    display: flex;
+    min-inline-size: 0;
+  }
+
+  .segment + .segment {
+    border-inline-start: var(--border-width) solid var(--color-border);
+  }
+
+  .face {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    min-block-size: var(--target-min);
+    padding-block: var(--space-2);
+    padding-inline: var(--space-3);
+    color: var(--color-text);
+    font-size: var(--text-caption-size);
+    line-height: var(--text-caption-line);
+    font-weight: var(--text-caption-weight);
+    text-align: center;
+    cursor: pointer;
+    transition:
+      background-color var(--duration-fast) var(--easing-standard),
+      color var(--duration-fast) var(--easing-standard);
+  }
+
+  /* Rounded ends follow the container so a selected fill does not poke out. */
+  .segment:first-child .face {
+    border-start-start-radius: var(--radius-md);
+    border-end-start-radius: var(--radius-md);
+  }
+
+  .segment:last-child .face {
+    border-start-end-radius: var(--radius-md);
+    border-end-end-radius: var(--radius-md);
+  }
+
+  .input:not(:disabled):not(:checked) + .face:hover {
+    background-color: var(--color-accent-soft);
+  }
+
+  .input:checked + .face {
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+  }
+
+  /* Raised above its neighbours so the whole ring stays visible. */
+  .input:focus-visible + .face {
+    position: relative;
+    z-index: 1;
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .input:disabled + .face {
+    background-color: var(--color-surface-neutral);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+  }
+}

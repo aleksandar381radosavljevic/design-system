@@ -48,6 +48,9 @@
 
     --color-focus: #2d5bb9;
 
+    /* Color: overlay behind modal dialogs. Not a contrast pair: it only dims the page. */
+    --color-scrim: rgb(27 31 38 / 0.5);
+
     /* Typography: system font stacks only, never web fonts */
     --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
     --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, "Liberation Mono", monospace;

@@ -1,0 +1,65 @@
+@layer osnova {
+  /* The box has no padding, so a click on the <dialog> element itself is a backdrop click. */
+  .dialog {
+    inline-size: calc(100% - var(--space-8));
+    max-inline-size: 60ch;
+    padding: 0;
+    border: var(--border-width) solid var(--color-border-subtle);
+    border-radius: var(--radius-xl);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-lg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+  }
+
+  .dialog::backdrop {
+    background-color: var(--color-scrim);
+  }
+
+  .dialog[open] {
+    animation: osnova-dialog-in var(--duration-base) var(--easing-standard);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+  }
+
+  .title {
+    margin: 0;
+    font-size: var(--text-heading-size);
+    line-height: var(--text-heading-line);
+    font-weight: var(--text-heading-weight);
+  }
+
+  .description {
+    color: var(--color-text);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line);
+    font-weight: var(--text-body-weight);
+  }
+
+  /* Stacked full width on phones, right-aligned in a row from 40rem (--bp-md). */
+  .actions {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--space-2);
+    margin-block-start: var(--space-3);
+  }
+
+  @media (min-width: 40rem) {
+    .actions {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+
+  @keyframes osnova-dialog-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+}
