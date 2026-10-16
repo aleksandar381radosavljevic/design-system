@@ -37,6 +37,7 @@ describe('tokens.css', () => {
       '--color-accent-decorative',
       '--color-attention-fill',
       '--color-scrim',
+      ...[1, 2, 3, 4, 5, 6].map((n) => `--color-category-${String(n)}-decorative`),
     ];
     const covered = new Set(contrastPairs.flatMap(({ fg, bg }) => [fg, bg]));
     const uncovered = colorTokens.filter((name) => !covered.has(name) && !decorativeOnly.includes(name));

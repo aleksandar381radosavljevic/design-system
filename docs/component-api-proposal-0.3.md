@@ -1,6 +1,6 @@
 # Component API proposal: Osnova 0.3.0
 
-- Status: Proposed
+- Status: **Approved by the owner on 2026-10-16, without changes** (palette in Osnova)
 - Date: 2026-10-16
 - Scope: the tokens and the one component that the administrativni-asistent "Illustrated friend" redesign needs and Osnova 0.2.0 lacks (app [ADR 0020](https://github.com/aleksandar381radosavljevic/administrativni-asistent/blob/claude/app-design-air5ho/docs/decisions/0020-illustrated-visual-direction.md); concept https://claude.ai/artifact/A6rGiMYn7eHu6pD7eLd4yD).
 - The shared conventions from the first proposal still apply: native element first, `className`/`ref`/`aria-*` pass-through, one enum-like prop for visual options, tokens only, no built-in copy.
@@ -52,7 +52,7 @@ A whole-card link with an illustration on top, a title and an optional meta line
 - **Look, `sticker`:** a `--color-surface` frame with `--space-3` padding around the tinted illustration, `--shadow-lg`, a translucent "tape" strip at the top edge, rotated by `tilt` through a custom property (`--osnova-tilt`), never an inline transform.
 - **States:** hover and `:focus-visible` lift the card; a `sticker` also straightens to 0° and scales to 1.04. Focus ring in `--color-focus`, at least 3:1. Under `prefers-reduced-motion` nothing moves; only the ring and shadow change.
 - **Meta is always visible.** The concept shows the duration only on the hovered sticker; touch screens have no hover, so the meta line stays visible on every card.
-- **Screen reader:** "Selim se na novu adresu, link". The meta is inside the link and is read after the title.
+- **Screen reader:** "Selim se na novu adresu, link". The link's name is the title only; the meta line follows it in reading order, outside the link.
 - **Rejected:** extending `CardLink` with an `illustration` prop. The sticker frame, tilt and tape would make `CardLink`'s API and styles carry art direction it does not need everywhere else.
 
 ---

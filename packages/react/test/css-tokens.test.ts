@@ -23,6 +23,8 @@ const componentProperties = new Set([
   '--skeleton-height',
   '--textarea-max-rows',
   '--banner-accent',
+  '--illustrated-card-tint',
+  '--osnova-tilt',
 ]);
 
 describe.each(modules)('$file', ({ file, css }) => {

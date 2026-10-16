@@ -8,8 +8,9 @@
 - Osnova renders no built-in text: pass every label in the app's language (`label`, `dismissLabel`, `aria-label`, `SkeletonGroup label`).
 - `Banner live` only for a banner that appears after a user action (`polite`, or `assertive` for urgent errors); never for a banner present on page load. Wrap loading skeletons in one `SkeletonGroup` with a `label`.
 - Announce progress and status changes from one page-level live region; `ProgressBar` and `SegmentedControl` stay silent. For confirmations use `Dialog` with `description` and two Buttons in `actions`, the app owning `open`, and `autoFocus` on the safe choice.
+- `IllustratedCard` artwork is decorative (hidden from screen readers) and colored only with theme tokens (`--color-category-N-decorative`, surfaces); never put text in it. Use `tone="category-N"` per content area, `variant="sticker"` with a `tilt` of at most 8 degrees for playful groups, `tile` otherwise.
 - Pick `EmptyState headingLevel` to fit the page outline, and always give it an `action`.
 - A project changes appearance only by overriding Osnova's tokens (`--color-*`, `--space-*`, `--radius-*`, `--text-*`, `--shadow-*`, `--duration-*`) in its theme file. Never restyle Osnova components by targeting their internal class names or by nesting selectors into them. `className` is for layout (margin, grid placement, width) only; on `Input` and `TextArea` it goes on the outer wrapper.
 - Project components read semantic tokens (`--color-text-muted`), not the theme's palette primitives.
 - When a theme changes color tokens, re-check WCAG 2.2 AA for every pair Osnova uses (4.5:1 text, 3:1 UI boundaries and focus indicators). A theme that overrides `--duration-*` must also set them to `0.01ms` under `prefers-reduced-motion: reduce`.
-- System font stack only; never add web fonts.
+- System font stack only; never add web fonts. Large headings use `--font-display` and the `--text-hero-*` step; a theme may set `--font-display` to a rounded system face such as `ui-rounded`.

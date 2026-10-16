@@ -1,6 +1,7 @@
 // Public API of @aleksandar381radosavljevic/osnova-react.
 // APIs approved on 2026-10-06 (docs/component-api-proposal.md, ADR 0004);
-// ProgressBar, SegmentedControl and Dialog in docs/component-api-proposal-0.2.md.
+// ProgressBar, SegmentedControl and Dialog in docs/component-api-proposal-0.2.md;
+// IllustratedCard in docs/component-api-proposal-0.3.md.
 export { OsnovaProvider, type OsnovaProviderProps } from './OsnovaProvider/OsnovaProvider';
 export type { LinkComponent, LinkComponentProps } from './OsnovaProvider/OsnovaContext';
 
@@ -40,3 +41,10 @@ export {
   type SegmentedControlProps,
 } from './SegmentedControl/SegmentedControl';
 export { Dialog, type DialogProps } from './Dialog/Dialog';
+export {
+  IllustratedCard,
+  type IllustratedCardHeadingLevel,
+  type IllustratedCardProps,
+  type IllustratedCardTone,
+  type IllustratedCardVariant,
+} from './IllustratedCard/IllustratedCard';

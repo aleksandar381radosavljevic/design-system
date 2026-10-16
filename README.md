@@ -9,7 +9,7 @@ Osnova ("foundation") is a shared design system for my projects: design tokens a
 
 Principles: WCAG 2.2 AA by default (every color pair is contrast-tested), system font stack only, icons from [Lucide](https://lucide.dev) through one `Icon` component, semantic HTML first.
 
-Status: first component scope built (OsnovaProvider, Icon, Button, Badge, Card, Input, TextArea, Banner, Skeleton, EmptyState), as approved in [`docs/component-api-proposal.md`](docs/component-api-proposal.md). Second scope (ProgressBar, SegmentedControl, Dialog) per [`docs/component-api-proposal-0.2.md`](docs/component-api-proposal-0.2.md). Usage examples are in [`docs/components.md`](docs/components.md); decisions are in [`docs/decisions/`](docs/decisions/).
+Status: first component scope built (OsnovaProvider, Icon, Button, Badge, Card, Input, TextArea, Banner, Skeleton, EmptyState), as approved in [`docs/component-api-proposal.md`](docs/component-api-proposal.md). Second scope (ProgressBar, SegmentedControl, Dialog) per [`docs/component-api-proposal-0.2.md`](docs/component-api-proposal-0.2.md). Third scope (categorical palette, hero type, IllustratedCard) per [`docs/component-api-proposal-0.3.md`](docs/component-api-proposal-0.3.md). Usage examples are in [`docs/components.md`](docs/components.md); decisions are in [`docs/decisions/`](docs/decisions/).
 
 ## Use Osnova in a project
 
