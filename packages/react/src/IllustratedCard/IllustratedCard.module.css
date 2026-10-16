@@ -1,0 +1,159 @@
+@layer osnova {
+  .card {
+    --illustrated-card-tint: var(--color-surface-neutral);
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text);
+    border-radius: var(--radius-2xl);
+    transition:
+      transform var(--duration-base) var(--easing-standard),
+      box-shadow var(--duration-base) var(--easing-standard);
+  }
+
+  .category-1 {
+    --illustrated-card-tint: var(--color-category-1-soft);
+  }
+
+  .category-2 {
+    --illustrated-card-tint: var(--color-category-2-soft);
+  }
+
+  .category-3 {
+    --illustrated-card-tint: var(--color-category-3-soft);
+  }
+
+  .category-4 {
+    --illustrated-card-tint: var(--color-category-4-soft);
+  }
+
+  .category-5 {
+    --illustrated-card-tint: var(--color-category-5-soft);
+  }
+
+  .category-6 {
+    --illustrated-card-tint: var(--color-category-6-soft);
+  }
+
+  .art {
+    display: block;
+    overflow: hidden;
+    background-color: var(--illustrated-card-tint);
+  }
+
+  /* Artwork scales with the card. */
+  .art > :is(svg, img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .body {
+    padding: var(--space-3) var(--space-5) var(--space-5);
+  }
+
+  .title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-title-size);
+    line-height: var(--text-title-line);
+    font-weight: var(--text-title-weight);
+  }
+
+  .meta {
+    margin: var(--space-1) 0 0;
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line);
+    font-weight: var(--text-body-sm-weight);
+    color: var(--color-text-muted);
+  }
+
+  .link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Stretches the link's click area over the whole card. */
+  .link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  /* Tile: the whole card takes the tint. */
+  .tile {
+    overflow: hidden;
+    background-color: var(--illustrated-card-tint);
+  }
+
+  .tile:is(:hover, :focus-within) {
+    transform: translateY(calc(var(--space-1) * -1));
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Sticker: a surface frame around the tinted art, tilted, with a strip of tape. */
+  .sticker {
+    padding: var(--space-3) var(--space-3) 0;
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-lg);
+    transform: rotate(var(--osnova-tilt));
+  }
+
+  .sticker .art {
+    border-radius: var(--radius-xl);
+  }
+
+  .sticker .body {
+    padding: var(--space-3) var(--space-2) var(--space-4);
+  }
+
+  .sticker:is(:hover, :focus-within) {
+    transform: rotate(0deg) scale(1.04);
+  }
+
+  .tape {
+    position: absolute;
+    top: calc(var(--space-3) * -1);
+    left: 50%;
+    width: calc(var(--space-12) + var(--space-8));
+    height: var(--space-6);
+    border-radius: var(--radius-sm);
+    background-color: var(--illustrated-card-tint);
+    opacity: 0.85;
+    transform: translateX(-50%) rotate(calc(var(--osnova-tilt) * -0.8));
+  }
+
+  .link:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* Where :has() works, the focus ring goes around the whole card instead of the title. */
+  @supports selector(:has(*)) {
+    .link:focus-visible {
+      outline: none;
+    }
+
+    .card:has(.link:focus-visible) {
+      outline: var(--focus-ring-width) solid var(--color-focus);
+      outline-offset: var(--focus-ring-offset);
+    }
+  }
+
+  /* Nothing moves: hover and focus change only the shadow and the ring. */
+  @media (prefers-reduced-motion: reduce) {
+    .tile:is(:hover, :focus-within) {
+      transform: none;
+    }
+
+    .sticker:is(:hover, :focus-within) {
+      transform: rotate(var(--osnova-tilt));
+    }
+  }
+}

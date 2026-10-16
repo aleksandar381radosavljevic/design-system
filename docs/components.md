@@ -218,3 +218,21 @@ Native radios: Tab enters the group on the selected option and the arrow keys mo
 ```
 
 The app owns `open`. Escape calls `onClose` and leaves closing to the app. Put `autoFocus` on the safe choice; focus returns to the opening button on close. A confirmation is this pattern, not a separate component.
+
+## IllustratedCard
+
+A card-sized link with decorative artwork, a title and an optional meta line. `tile` takes its category tint over the whole card; `sticker` is a surface frame, tilted up to 8 degrees, that straightens on hover and focus.
+
+```tsx
+<IllustratedCard
+  href="/moving"
+  title="Moving house"
+  meta="About a week"
+  tone="category-2"
+  variant="sticker"
+  tilt={-6}
+  illustration={<MovingArt />}
+/>
+```
+
+The artwork is hidden from screen readers; the link's name is the title. Event props such as `onFocus` and `onMouseEnter` go on the card, so a page can react to the card a visitor is looking at.

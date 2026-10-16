@@ -46,6 +46,31 @@
     --color-danger-hover: #872a23;
     --color-danger-soft: #f8e1de;
 
+    /*
+     * Color: categorical palette, for telling groups apart (content areas,
+     * chart series). Per category: the base color for text and meaningful
+     * icons, -soft for tinted backgrounds, -decorative for illustration fills
+     * only (never text, never the only cue).
+     */
+    --color-category-1: #2b5aa8;
+    --color-category-1-soft: #e3ecf9;
+    --color-category-1-decorative: #6f9be0;
+    --color-category-2: #2f6a43;
+    --color-category-2-soft: #e1f0e6;
+    --color-category-2-decorative: #6fb488;
+    --color-category-3: #765510;
+    --color-category-3-soft: #fbefd2;
+    --color-category-3-decorative: #e2b13c;
+    --color-category-4: #a1362e;
+    --color-category-4-soft: #f8e1de;
+    --color-category-4-decorative: #e07a70;
+    --color-category-5: #6b3f87;
+    --color-category-5-soft: #eee4f4;
+    --color-category-5-decorative: #a77cc4;
+    --color-category-6: #1f6466;
+    --color-category-6-soft: #dcefef;
+    --color-category-6-decorative: #5fb0b0;
+
     --color-focus: #2d5bb9;
 
     /* Color: overlay behind modal dialogs. Not a contrast pair: it only dims the page. */
@@ -53,9 +78,16 @@
 
     /* Typography: system font stacks only, never web fonts */
     --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+    /* Large headings. Defaults to the body stack; a theme may pick a rounded system face. */
+    --font-display: var(--font-body);
     --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
     /* Type scale: each style is a size, line height and weight set */
+    /* Hero: the one headline at the top of a landing page, 44px on a phone to 108px wide. */
+    --text-hero-size: clamp(2.75rem, 5vw + 1rem, 6.75rem);
+    --text-hero-line: 0.95;
+    --text-hero-weight: 900;
+    --text-hero-tracking: -0.04em;
     --text-display-size: 1.75rem;
     --text-display-line: 1.2;
     --text-display-weight: 800;
@@ -99,6 +131,7 @@
     --radius-md: 10px;
     --radius-lg: 12px;
     --radius-xl: 16px;
+    --radius-2xl: 24px;
     --radius-full: 9999px;
 
     /* Elevation. Never the only boundary of an interactive element. */
