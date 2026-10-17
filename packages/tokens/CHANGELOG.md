@@ -1,5 +1,11 @@
 # @aleksandar381radosavljevic/osnova-tokens
 
+## 0.3.0
+
+### Minor Changes
+
+- [#6](https://github.com/aleksandar381radosavljevic/design-system/pull/6) [`8fa56c2`](https://github.com/aleksandar381radosavljevic/design-system/commit/8fa56c260e4ab26930226cf6788bd613ee350f42) Thanks [@aleksandar381radosavljevic](https://github.com/aleksandar381radosavljevic)! - Add the categorical palette (`--color-category-1` … `-6`, each with `-soft` and `-decorative`), the hero type step (`--text-hero-*`), `--font-display` and `--radius-2xl`, and the `IllustratedCard` component (`tile` and tilted `sticker` variants).
+
 ## 0.2.0
 
 ### Minor Changes
