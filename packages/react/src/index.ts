@@ -39,6 +39,7 @@ export {
   SegmentedControl,
   type SegmentedControlOption,
   type SegmentedControlProps,
+  type SegmentedControlTone,
 } from './SegmentedControl/SegmentedControl';
 export { Dialog, type DialogProps } from './Dialog/Dialog';
 export {
