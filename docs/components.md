@@ -180,9 +180,9 @@ The label is visible and is also the bar's accessible name. The bar does not ann
 
 ```tsx
 const statusOptions = [
-  { value: 'todo', label: 'Nije počelo' },
-  { value: 'in_progress', label: 'U toku' },
-  { value: 'done', label: 'Završeno' },
+  { value: 'todo', label: 'Nije počelo', tone: 'neutral' },
+  { value: 'in_progress', label: 'U toku', tone: 'attention' },
+  { value: 'done', label: 'Završeno', tone: 'success' },
 ];
 
 <SegmentedControl
@@ -194,7 +194,9 @@ const statusOptions = [
 />
 ```
 
-Native radios: Tab enters the group on the selected option and the arrow keys move and select. Segments share the width the container gives them, so the app decides where the control sits.
+Native radios: Tab enters the group on the selected option and the arrow keys move and select. Segments share the width the container gives them, so the app decides where the control sits; a segment never shrinks below its label, so a label that can wrap gives up the space.
+
+`tone` on an option colors it when selected: `accent` (default, solid fill), `success` (solid fill), `neutral` and `attention` (soft fill with an inset ring). Use it when options stand for states, so the default state does not shout. The label and the check mark carry the meaning; the tone only reinforces it.
 
 ## Dialog
 

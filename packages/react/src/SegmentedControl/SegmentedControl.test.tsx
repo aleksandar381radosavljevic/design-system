@@ -63,6 +63,25 @@ describe('SegmentedControl', () => {
     for (const radio of screen.getAllByRole('radio')) expect(radio).toBeDisabled();
   });
 
+  it('gives an option its tone only through a class, keeping the label and check mark', () => {
+    render(
+      <SegmentedControl
+        legend="Status"
+        options={[
+          { value: 'todo', label: 'Not started', tone: 'neutral' },
+          { value: 'done', label: 'Done', tone: 'success' },
+        ]}
+        value="done"
+        onChange={() => undefined}
+      />,
+    );
+    const done = screen.getByText('Done');
+    const todo = screen.getByText('Not started');
+    expect(done.className).not.toBe(todo.className);
+    expect(done.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+    expect(screen.getByRole('radio', { name: 'Done' })).toBeChecked();
+  });
+
   it('shares one name between its radios', () => {
     render(<Controlled name="status-1" />);
     for (const radio of screen.getAllByRole('radio')) expect(radio).toHaveAttribute('name', 'status-1');

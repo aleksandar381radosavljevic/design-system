@@ -4,10 +4,18 @@ import a11y from '../internal/a11y.module.css';
 import { cx } from '../internal/cx';
 import styles from './SegmentedControl.module.css';
 
+export type SegmentedControlTone = 'accent' | 'neutral' | 'success' | 'attention';
+
 export interface SegmentedControlOption {
   value: string;
   label: string;
   disabled?: boolean;
+  /**
+   * Color of this option when selected, for options that stand for a state
+   * (for example a status). The label and the check mark carry the meaning;
+   * the tone only reinforces it. @default 'accent'
+   */
+  tone?: SegmentedControlTone;
 }
 
 export interface SegmentedControlProps extends Omit<ComponentPropsWithRef<'fieldset'>, 'children' | 'onChange'> {
@@ -15,7 +23,7 @@ export interface SegmentedControlProps extends Omit<ComponentPropsWithRef<'field
   legend: string;
   /** `hidden` keeps the legend for screen readers only. @default 'visible' */
   legendDisplay?: 'visible' | 'hidden';
-  /** Two to five short options, shown as equal-width segments. */
+  /** Two to five short options; segments share the width, each at least as wide as its label. */
   options: SegmentedControlOption[];
   /** The selected option's value. */
   value: string;
@@ -57,7 +65,7 @@ export function SegmentedControl({
                 disabled={option.disabled}
                 onChange={() => { onChange(option.value); }}
               />
-              <span className={styles.face}>
+              <span className={cx(styles.face, styles[option.tone ?? 'accent'])}>
                 {checked && <Icon name="check" size={16} />}
                 {option.label}
               </span>

@@ -16,10 +16,14 @@
     font-weight: var(--text-label-weight);
   }
 
-  /* Equal-width segments that fill whatever width the container gives them. */
+  /*
+   * Segments share the container's width but never shrink below their content,
+   * so a selected label with its check mark cannot spill out; a label that can
+   * wrap gives up the space instead.
+   */
   .segments {
     display: grid;
-    grid-auto-columns: 1fr;
+    grid-auto-columns: minmax(min-content, 1fr);
     grid-auto-flow: column;
     border: var(--border-width) solid var(--color-border);
     border-radius: var(--radius-md);
@@ -71,9 +75,36 @@
     background-color: var(--color-accent-soft);
   }
 
-  .input:checked + .face {
+  .input:checked + .accent {
     background-color: var(--color-accent);
     color: var(--color-text-on-accent);
+  }
+
+  .input:checked + .success {
+    background-color: var(--color-success);
+    color: var(--color-text-on-accent);
+  }
+
+  /*
+   * Soft fills are close to the surface, so an inner ring marks the selection.
+   * The focus ring below replaces it while focused; fill and check mark stay.
+   */
+  .input:checked + .neutral,
+  .input:checked + .attention {
+    color: var(--color-text);
+    outline-width: calc(var(--border-width) * 2);
+    outline-style: solid;
+    outline-offset: calc(var(--border-width) * -2);
+  }
+
+  .input:checked + .neutral {
+    background-color: var(--color-surface-neutral);
+    outline-color: var(--color-text-muted);
+  }
+
+  .input:checked + .attention {
+    background-color: var(--color-attention-soft);
+    outline-color: var(--color-attention);
   }
 
   /* Raised above its neighbours so the whole ring stays visible. */
