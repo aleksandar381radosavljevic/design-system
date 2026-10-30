@@ -1,5 +1,11 @@
 # @aleksandar381radosavljevic/osnova-react
 
+## 0.4.0
+
+### Minor Changes
+
+- [#8](https://github.com/aleksandar381radosavljevic/design-system/pull/8) [`b9ed536`](https://github.com/aleksandar381radosavljevic/design-system/commit/b9ed536fb14499508c3688e95e54fd450e2305b9) Thanks [@aleksandar381radosavljevic](https://github.com/aleksandar381radosavljevic)! - SegmentedControl: an option can set `tone` (`accent`, `neutral`, `success`, `attention`) for its selected look, so options that stand for states can be colored by meaning. Segments no longer shrink below their content, so a selected label with its check mark no longer spills out of a narrow control.
+
 ## 0.3.0
 
 ### Minor Changes
